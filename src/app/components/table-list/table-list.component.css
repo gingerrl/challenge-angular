@@ -1,0 +1,28 @@
+.container{
+    background-color: white;
+}
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.image {
+    width: 150px;
+    height: 60px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+}

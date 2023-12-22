@@ -1,0 +1,32 @@
+<div class="container">
+    <table>
+        <tr>
+            <th>Logo</th>
+            <th>Nombre del producto</th>
+            <th>Descripcion</th>
+            <th>Fecha de liberacion</th>
+            <th>Fecha de reestructuracion</th>
+
+        </tr>
+        <tr *ngFor=" let item of dataList">
+            <td><img class="image" src={{item.logo}} alt={{item.name}}></td>
+            <td>{{item.name}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.date_release}}</td>
+            <td>{{item.date_revision}}</td>
+
+        </tr>
+       
+    </table>
+
+<div class="footer">
+    <div>
+        {{dataList.length}} Resultados
+    </div>
+    <select name="select">
+        <option value="5" selected>5</option>
+        <option value="10" >10</option>
+        <option value="20">20</option>
+      </select>
+</div>
+</div>
