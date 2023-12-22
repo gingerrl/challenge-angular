@@ -1,0 +1,40 @@
+<div class="container">
+    <h1>Formulario de Registro</h1>
+    <hr>
+    <form class="form-content" [formGroup]="form">
+        <div>
+            <label for="id">ID</label>
+            <input name="id" formControlName="id" />
+        </div>
+        <div>
+            <label for="name">Nombre</label>
+            <input name="name" formControlName="name" />
+        </div>
+        <div>
+            <label for="description">Descripcion</label>
+            <input name="description" formControlName="description" />
+        </div>
+        <div>
+            <label for="logo">Logo</label>
+            <input name="logo" formControlName="logo" />
+        </div>
+        <div>
+            <label for="date_release">Fecha Liberacion</label>
+            <input name="date_release" formControlName="date_release" />
+        </div>
+        <div>
+            <label for="date_revision">Fecha Revision</label>
+            <input name="date_revision" formControlName="date_revision" />
+        </div>
+    </form>
+
+    <div class="button-content">
+        <button>
+            Reiniciar
+        </button>
+        <button>
+            Enviar
+        </button>
+    </div>
+
+</div>
