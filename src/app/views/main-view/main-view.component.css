@@ -1,0 +1,28 @@
+.container {
+    width: 1240px;
+    margin: auto;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.header-content input {
+    padding-left: 10px;
+    height: 30px;
+    border-radius: 8px;
+    border: 1px solid gray;
+    align-self: center;
+}
+
+.button-add {
+    color: black;
+    background-color: yellow;
+    padding: 15px;
+    border: 0px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
