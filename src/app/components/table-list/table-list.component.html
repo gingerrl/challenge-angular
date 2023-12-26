@@ -6,27 +6,45 @@
             <th>Descripcion</th>
             <th>Fecha de liberacion</th>
             <th>Fecha de reestructuracion</th>
-
+            <th></th>
         </tr>
-        <tr *ngFor=" let item of dataList">
+        <tr *ngFor=" let item of listFilter">
             <td><img class="image" src={{item.logo}} alt={{item.name}}></td>
             <td>{{item.name}}</td>
             <td>{{item.description}}</td>
             <td>{{item.date_release}}</td>
             <td>{{item.date_revision}}</td>
-
+            <td>
+                <span class="dropdown">
+                    <!-- <button class="">Dropdown</button> -->
+                    <i class="fa-solid fa-ellipsis-vertical dropbtn"></i>
+                    <div class="dropdown-content">
+                        <div (click)="handleEdit()">Editar</div>
+                        <div (click)="handleDelete()">Eliminar</div>
+                    </div>
+                </span>
+            </td>
         </tr>
-       
     </table>
 
-<div class="footer">
-    <div>
-        {{dataList.length}} Resultados
+    <div class="footer">
+        <div>
+            {{listFilter.length}} Resultados
+        </div>
+        <select name="select" (change)="handleSelect($event)">
+            <option value="5" selected>5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+        </select>
     </div>
-    <select name="select">
-        <option value="5" selected>5</option>
-        <option value="10" >10</option>
-        <option value="20">20</option>
-      </select>
 </div>
-</div>
+
+
+<ng-container *ngIf="showModalEdit">
+    <app-card-form></app-card-form>
+</ng-container>
+
+<ng-container *ngIf="showModalDelete">
+    <app-modal-delete></app-modal-delete>
+
+</ng-container>

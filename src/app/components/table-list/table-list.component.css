@@ -1,5 +1,6 @@
-.container{
+.container {
     background-color: white;
+    padding: 16px;
 }
 
 
@@ -9,11 +10,16 @@ table {
     width: 100%;
 }
 
-td,
+td {
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid  rgb(235, 232, 232);
+    gap: 16px;
+}
+
 th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+    background-color: rgb(235, 232, 232);
+    height: 50px;
 }
 
 .image {
@@ -25,4 +31,50 @@ th {
     display: flex;
     justify-content: space-between;
     padding: 16px;
+}
+
+
+
+
+
+
+/* Style for dropdown button */
+.dropbtn {
+  /* background-color: #5d5fd6; */
+  color: black;
+  padding: 10px;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Style for dropdown content */
+.dropdown-content {
+  display: none; /* Hidden by default */
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 85px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  cursor: pointer;
+}
+
+/* Style for each content div */
+.dropdown-content div {
+  padding: 10px 5px;
+}
+
+/* Highlight dropdown options on hover */
+.dropdown-content div:hover {
+  background-color: #eaeaea;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Highlight dropdown button when dropdown menu is open */
+.dropdown:hover .dropbtn {
+  background-color: #474885;
 }
