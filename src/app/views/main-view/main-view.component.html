@@ -1,9 +1,9 @@
 <div class="container">
     <div class="header-content">
-        <input id="search" placeholder="Search.." />
-        <button class="button-add">
+        <input id="search" placeholder="Search.." (keyup)="handleSearch($event)" />
+        <button class="button-add" (click)="handleAdd()">
             Agregar
         </button>
     </div>
-    <app-table-list></app-table-list>
+    <app-table-list [dataList]="dataListFilter"></app-table-list>
 </div>
