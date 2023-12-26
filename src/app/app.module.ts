@@ -7,7 +7,10 @@ import { MainViewComponent } from './views/main-view/main-view.component';
 import { CardFormComponent } from './views/card-form/card-form.component';
 import { AppRoutingModule } from './routes/routing.module';
 import { TableListComponent } from './components/table-list/table-list.component';
-import { SearchComponent } from './components/search/search.component';
+import { CardListService } from './services/card-list.service';
+import { HttpClientModule } from '@angular/common/http';
+import { CardFormService } from './services/card-form.service';
+import { ModalDeleteComponent } from './components/modal-delete/modal-delete.component';
 
 @NgModule({
   declarations: [
@@ -15,15 +18,19 @@ import { SearchComponent } from './components/search/search.component';
     MainViewComponent,
     CardFormComponent,
     TableListComponent,
-    SearchComponent
+    ModalDeleteComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    CardListService,
+    CardFormService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
