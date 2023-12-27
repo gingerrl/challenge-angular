@@ -63,3 +63,16 @@
 .input-error{
     border: 2px solid red !important;
 }
+
+
+.button-back{
+    width: 80px;
+    height: 35px;
+    display: flex;
+    background-color: yellow;
+    border: 0px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}

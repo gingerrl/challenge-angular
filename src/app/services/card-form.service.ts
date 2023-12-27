@@ -17,4 +17,9 @@ export class CardFormService {
         const response = await axios.get(`${Endpoints.VERIFICATION}`, { params: { 'id': id }, headers: { 'authorId': '931475503' } })
         return response.data
     }
+
+    async updateProduct(body: ListCard[]) {
+        const response = await axios.put(`${Endpoints.URL}`, body, { headers: { 'authorId': '931475503' } })
+        return response.data
+    }
 }
