@@ -5,5 +5,5 @@
             Agregar
         </button>
     </div>
-    <app-table-list [dataList]="dataListFilter"></app-table-list>
+    <app-table-list [dataList]="dataListFilter" (listEvent)="getCardList()"></app-table-list>
 </div>
