@@ -19,8 +19,8 @@
                     <!-- <button class="">Dropdown</button> -->
                     <i class="fa-solid fa-ellipsis-vertical dropbtn"></i>
                     <div class="dropdown-content">
-                        <div (click)="handleEdit()">Editar</div>
-                        <div (click)="handleDelete()">Eliminar</div>
+                        <div (click)="handleEdit(item)">Editar</div>
+                        <div (click)="handleDelete(item)">Eliminar</div>
                     </div>
                 </span>
             </td>
@@ -39,12 +39,6 @@
     </div>
 </div>
 
-
-<ng-container *ngIf="showModalEdit">
-    <app-card-form></app-card-form>
-</ng-container>
-
 <ng-container *ngIf="showModalDelete">
-    <app-modal-delete></app-modal-delete>
-
+    <app-modal-delete [item]="selectList" (closeModal)="handleCloseModal()" (buttonConfirm)="handleConfirm()"></app-modal-delete>
 </ng-container>
