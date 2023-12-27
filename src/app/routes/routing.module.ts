@@ -13,10 +13,7 @@ const routes: Routes = [
         path: 'form',
         component: CardFormComponent,
     },
-    {
-        path: 'form/:id',
-        component: CardFormComponent,
-    },
+
     {
         path: '**',
         redirectTo: 'home'
