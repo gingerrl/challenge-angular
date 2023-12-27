@@ -1,40 +1,37 @@
 .container {
-    background-color: white;
-    padding: 16px;
+  background-color: white;
+  padding: 16px;
 }
 
 
 table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+  /* font-family: arial, sans-serif; */
+  border-collapse: collapse;
+  width: 100%;
 }
 
 td {
-    text-align: center;
-    padding: 20px;
-    border-top: 2px solid  rgb(235, 232, 232);
-    gap: 16px;
+  text-align: center;
+  padding: 20px;
+  border-top: 2px solid rgb(235, 232, 232);
+  gap: 16px;
 }
 
 th {
-    background-color: rgb(235, 232, 232);
-    height: 50px;
+  background-color: rgb(235, 232, 232);
+  height: 50px;
 }
 
 .image {
-    width: 150px;
-    height: 60px;
+  width: 150px;
+  height: 60px;
 }
 
 .footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
 }
-
-
-
 
 
 
@@ -50,7 +47,8 @@ th {
 
 /* Style for dropdown content */
 .dropdown-content {
-  display: none; /* Hidden by default */
+  display: none;
+  /* Hidden by default */
   position: absolute;
   background-color: #ffffff;
   min-width: 85px;
@@ -76,5 +74,5 @@ th {
 
 /* Highlight dropdown button when dropdown menu is open */
 .dropdown:hover .dropbtn {
-  background-color: #474885;
+  background-color: seashell;
 }
