@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CardListService } from 'src/app/services/card-list.service';
+import { CardListService } from '../../services/card-list.service';
 import { ListCard } from '../../models/data-list.models';
 
 @Component({

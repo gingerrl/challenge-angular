@@ -11,12 +11,20 @@ export class CardListService {
     }
 
     async getLists() {
-        const response = await axios.get(`${Endpoints.URL}`, { headers: { 'authorId': '931475503' } })
-        return response.data
+        try {
+            const response = await axios.get(`${Endpoints.URL}`, { headers: { 'authorId': '931475503' } })
+            return response.data
+        } catch (error) {
+            alert("Error vuelva a intentar")
+        }
     }
 
     async delete(id: string) {
-        const response = await axios.delete(`${Endpoints.URL}`, { params: { 'id': id }, headers: { 'authorId': '931475503' } })
-        return response
+        try {
+            const response = await axios.delete(`${Endpoints.URL}`, { params: { 'id': id }, headers: { 'authorId': '931475503' } })
+            return response.data
+        } catch (error) {
+            alert("Error vuelva a intentar")
+        }
     }
 }

@@ -9,17 +9,31 @@ export class CardFormService {
     constructor() { }
 
     async addProduct(body: ListCard[]) {
-        const response = await axios.post(`${Endpoints.URL}`, body, { headers: { 'authorId': '931475503' } })
-        return response.data
+        try {
+            const response = await axios.post(`${Endpoints.URL}`, body, { headers: { 'authorId': '931475503' } })
+            return response.data
+        } catch (error) {
+            alert("Error vuelva a intentar")
+        }
     }
 
     async verificationProduct(id: string) {
-        const response = await axios.get(`${Endpoints.VERIFICATION}`, { params: { 'id': id }, headers: { 'authorId': '931475503' } })
-        return response.data
+        try {
+            const response = await axios.get(`${Endpoints.VERIFICATION}`, { params: { 'id': id }, headers: { 'authorId': '931475503' } })
+            return response.data
+        } catch (error) {
+            alert("Error vuelva a intentar")
+        }
+
     }
 
     async updateProduct(body: ListCard[]) {
-        const response = await axios.put(`${Endpoints.URL}`, body, { headers: { 'authorId': '931475503' } })
-        return response.data
+        try {
+            const response = await axios.put(`${Endpoints.URL}`, body, { headers: { 'authorId': '931475503' } })
+            return response.data
+        } catch (error) {
+            alert("Error vuelva a intentar")
+        }
+
     }
 }
