@@ -41,18 +41,18 @@
         </div>
         <div>
             <label for="date_release">Fecha Liberacion</label>
-            <input
+            <input 
                 [ngClass]="form.get('date_release')?.errors && form.get('date_release')?.touched ? 'input-error' : ''"
-                name="date_release" formControlName="date_release" />
+                name="date_release" formControlName="date_release" placeholder="YYYY-MM-DD"/>
             <div class="color-text" *ngIf="form.get('date_release')?.errors && form.get('date_release')?.touched">
                 <small *ngIf="form.get('date_release')?.hasError('required')">Fecha Liberacion es requerido</small>
             </div>
         </div>
         <div>
             <label for="date_revision">Fecha Revision</label>
-            <input
+            <input 
                 [ngClass]="form.get('date_revision')?.errors && form.get('date_revision')?.touched ? 'input-error' : ''"
-                name="date_revision" formControlName="date_revision" />
+                name="date_revision" formControlName="date_revision" placeholder="YYYY-MM-DD"/>
             <div class="color-text" *ngIf="form.get('date_revision')?.errors && form.get('date_revision')?.touched">
                 <small *ngIf="form.get('date_revision')?.hasError('required')">Fecha Revision es requerido</small>
             </div>

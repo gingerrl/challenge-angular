@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CardFormService } from '../../services/card-form.service';
 import { ListCard } from '../../models/data-list.models';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-card-form',
@@ -93,8 +94,8 @@ export class CardFormComponent implements OnInit {
       name: item.name,
       description: item.description,
       logo: item.logo,
-      date_release: item.date_release,
-      date_revision: item.date_revision
+      date_release: formatDate(item.date_release, 'YYYY-MM-dd', 'en','UTC') ,
+      date_revision: formatDate(item.date_revision, 'YYYY-MM-dd', 'en', 'UTC') 
     })
   }
   handleBack() {

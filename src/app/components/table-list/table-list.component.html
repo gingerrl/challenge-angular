@@ -12,8 +12,8 @@
             <td><img class="image" src={{item.logo}} alt={{item.name}}></td>
             <td>{{item.name}}</td>
             <td>{{item.description}}</td>
-            <td>{{item.date_release}}</td>
-            <td>{{item.date_revision}}</td>
+            <td>{{item.date_release | date:'YYYY-MM-d': 'UTC'}}</td>
+            <td>{{item.date_revision | date:'YYYY-MM-d':'UTC'}}</td>
             <td>
                 <span class="dropdown">
                     <!-- <button class="">Dropdown</button> -->
