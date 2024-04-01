@@ -5,5 +5,10 @@
             Agregar
         </button>
     </div>
-    <app-table-list [dataList]="dataListFilter" (listEvent)="getCardList()"></app-table-list>
+    <ng-container *ngIf="isLoading === true ; else other">
+        <app-table-skeletons></app-table-skeletons>
+    </ng-container>
+    <ng-template #other>
+        <app-table-list [dataList]="dataListFilter" (listEvent)="getCardList()"></app-table-list>
+    </ng-template>
 </div>

@@ -10,7 +10,8 @@ import { CardListService } from '../../services/card-list.service';
 })
 export class MainViewComponent implements OnInit {
   dataList: ListCard[] = []
-  dataListFilter: ListCard[] = []
+  dataListFilter: ListCard[] = [];
+  isLoading: boolean = false;
   constructor(
     private cardList: CardListService,
     private router: Router
@@ -24,7 +25,9 @@ export class MainViewComponent implements OnInit {
   }
 
   async getCardList() {
+    this.isLoading = true
     this.cardList.getLists().then((data) => {
+      this.isLoading = false
       this.dataList = data
       this.dataListFilter = data
     })

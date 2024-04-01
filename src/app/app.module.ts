@@ -11,6 +11,7 @@ import { CardListService } from './services/card-list.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CardFormService } from './services/card-form.service';
 import { ModalDeleteComponent } from './components/modal-delete/modal-delete.component';
+import { TableSkeletonsComponent } from './components/table-skeletons/table-skeletons.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ModalDeleteComponent } from './components/modal-delete/modal-delete.com
     MainViewComponent,
     CardFormComponent,
     TableListComponent,
-    ModalDeleteComponent
+    ModalDeleteComponent,
+    TableSkeletonsComponent
   ],
   imports: [
     BrowserModule,
