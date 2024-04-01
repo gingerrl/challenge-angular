@@ -1,6 +1,44 @@
 .container {
   background-color: white;
   padding: 16px;
+
+}
+
+@media (max-width: 768px) {
+  .container {
+    overflow-x: scroll;
+  }
+
+  .dropdown-content {
+    position: relative !important;
+  }
+
+  .table-responsive {
+    display: table !important;
+    width: 100% !important;
+  }
+
+  .table {
+    display: none;
+  }
+  .table-responsive tr{
+    display: flex;
+    width: 90% !important;
+  }
+  .table-responsive th {
+    min-width: 50% !important;
+  }
+
+  .table-responsive td {
+    min-width: 50% !important;
+  }
+}
+
+
+
+
+.table-responsive {
+  display: none;
 }
 
 
@@ -23,8 +61,9 @@ th {
 }
 
 .image {
-  width: 150px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
+  border-radius:1px 50%;
 }
 
 .footer {
@@ -75,4 +114,25 @@ th {
 /* Highlight dropdown button when dropdown menu is open */
 .dropdown:hover .dropbtn {
   background-color: seashell;
+}
+
+
+
+/* .skeleton-loader {
+  width: 300px;
+  height: 20px;
+  background: linear-gradient(90deg, var(--loader-background-color) 25%, var(--loader-highlight-color) 50%, var(--loader-background-color) 75%);
+  background-size: 200% 100%;
+  animation: loading 5s infinite ease-in-out;
+  border-radius: 8px;
+  margin-bottom: 20px;
+} */
+
+@keyframes loading {
+  0% {
+      background-position: 200% 0;
+  }
+  100% {
+      background-position: -200% 0;
+  }
 }
