@@ -57,20 +57,30 @@ export class CardFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  async handleSend() {
-    if (!this.isCreate) {
-     await this.cardForm.updateProduct(this.form.value)
-      this.router.navigate([`/home`])
-      return
-    }
-    const showResult = await this.cardForm.verificationProduct(this.form.controls['id'].value)
-    if (!showResult) {
-     await this.cardForm.addProduct(this.form.value)
+  handleFormSend() {
+    this.handleUpdateProduct()
+    this.cardForm.verificationProduct(this.form.controls['id'].value).subscribe((data) => {
+      this.handleAddProduct(data)
+    });
+  }
+
+  handleAddProduct(exist: boolean) {
+    if (!exist) {
+      this.cardForm.addProduct(this.form.value).subscribe(() => {
+        this.router.navigate([`/home`]);
+      })
     } else {
       alert('El id ya existe')
     }
-    this.router.navigate([`/home`])
+  }
 
+  handleUpdateProduct() {
+    if (!this.isCreate) {
+      this.cardForm.updateProduct(this.form.value).subscribe(() => {
+        this.router.navigate([`/home`]);
+      })
+      return
+    }
   }
 
   handleRestart() {
@@ -94,11 +104,11 @@ export class CardFormComponent implements OnInit {
       name: item.name,
       description: item.description,
       logo: item.logo,
-      date_release: formatDate(item.date_release, 'YYYY-MM-dd', 'en','UTC') ,
-      date_revision: formatDate(item.date_revision, 'YYYY-MM-dd', 'en', 'UTC') 
+      date_release: formatDate(item.date_release, 'YYYY-MM-dd', 'en', 'UTC'),
+      date_revision: formatDate(item.date_revision, 'YYYY-MM-dd', 'en', 'UTC')
     })
   }
-  handleBack() {
+  goBack() {
     this.router.navigate(['/home'])
   }
 }

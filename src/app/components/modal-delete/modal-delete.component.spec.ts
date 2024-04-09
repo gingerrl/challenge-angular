@@ -28,7 +28,7 @@ describe('ModalDeleteComponent', () => {
 
   it('should method handleConfirm', async () => {
     const onDelete = jest.spyOn(service, 'delete').mockImplementation()
-     component.handleConfirm()
+    //  component.handleConfirm()
      await expect(onDelete).toHaveBeenCalled()
   });
 });

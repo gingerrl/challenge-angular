@@ -13,7 +13,7 @@ export class MainViewComponent implements OnInit {
   dataListFilter: ListCard[] = [];
   isLoading: boolean = false;
   constructor(
-    private cardList: CardListService,
+    private cardListService: CardListService,
     private router: Router
   ) { }
   ngOnInit(): void {
@@ -24,13 +24,14 @@ export class MainViewComponent implements OnInit {
     this.router.navigate(['/form'])
   }
 
-  async getCardList() {
+  getCardList() {
     this.isLoading = true
-    this.cardList.getLists().then((data) => {
+    this.cardListService.getLists().subscribe((data) => {
       this.isLoading = false
       this.dataList = data
       this.dataListFilter = data
     })
+
   }
 
   handleSearch(e: any) {

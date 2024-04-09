@@ -1,39 +1,26 @@
 import { Injectable } from "@angular/core"
 import { ListCard } from "../models/data-list.models"
 import { Endpoints } from "../config/endpoints.enum";
-import axios from "axios";
+import { HttpClient } from "@angular/common/http";
+import { VARIABLE } from "../utils/constants";
 @Injectable({
     providedIn: 'root'
 })
 export class CardFormService {
-    constructor() { }
+    constructor(
+        private http: HttpClient
 
-    async addProduct(body: ListCard[]) {
-        try {
-            const response = await axios.post(`${Endpoints.URL}`, body, { headers: { 'authorId': '931475503' } })
-            return response.data
-        } catch (error) {
-            alert("Error vuelva a intentar")
-        }
+    ) { }
+
+    addProduct(body: ListCard[]) {
+        return this.http.post(`${Endpoints.URL}`, body, { headers: { 'authorId': VARIABLE.ID_AUTHOR } })
     }
 
-    async verificationProduct(id: string) {
-        try {
-            const response = await axios.get(`${Endpoints.VERIFICATION}`, { params: { 'id': id }, headers: { 'authorId': '931475503' } })
-            return response.data
-        } catch (error) {
-            alert("Error vuelva a intentar")
-        }
-
+    verificationProduct(id: string) {
+        return this.http.get<boolean>(`${Endpoints.VERIFICATION}`, { params: { 'id': id }, headers: { 'authorId': VARIABLE.ID_AUTHOR } })
     }
 
-    async updateProduct(body: ListCard[]) {
-        try {
-            const response = await axios.put(`${Endpoints.URL}`, body, { headers: { 'authorId': '931475503' } })
-            return response.data
-        } catch (error) {
-            alert("Error vuelva a intentar")
-        }
-
+    updateProduct(body: ListCard[]) {
+        return this.http.put(`${Endpoints.URL}`, body, { headers: { 'authorId': VARIABLE.ID_AUTHOR } })
     }
 }

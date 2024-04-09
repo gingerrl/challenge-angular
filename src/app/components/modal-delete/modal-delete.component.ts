@@ -25,11 +25,13 @@ export class ModalDeleteComponent {
   ) {
 
   }
-  handleclose() {
+  onButtonCancel(): void {
     this.closeModal.emit()
   }
-  async handleConfirm() {
-    await this.deleteService.delete(this.item.id)
-    this.buttonConfirm.emit()
+  onButtonConfirm(): void {
+    this.deleteService.delete(this.item.id).subscribe((data) => {
+      this.buttonConfirm.emit()
+    })
+
   }
 }

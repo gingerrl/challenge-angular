@@ -1,5 +1,5 @@
 <div class="container">
-    <button class="button-back" (click)="handleBack()">Regresar</button>
+    <button class="button-back" (click)="goBack()">Regresar</button>
 
     <h1>Formulario de Registro</h1>
     <hr>
@@ -63,7 +63,7 @@
         <button class="button-reiniciar" (click)="handleRestart()">
             Reiniciar
         </button>
-        <button class="button-send" (click)="handleSend()" [disabled]="form.invalid">
+        <button class="button-send" (click)="handleFormSend()" [disabled]="form.invalid">
             Enviar
         </button>
     </div>
