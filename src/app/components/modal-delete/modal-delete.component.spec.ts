@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ModalDeleteComponent } from './modal-delete.component';
 import { CardListService } from '../../services/card-list.service';
+import { of } from 'rxjs';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ModalDeleteComponent', () => {
   let component: ModalDeleteComponent;
@@ -9,7 +11,9 @@ describe('ModalDeleteComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ModalDeleteComponent],
-      imports: [],
+      imports: [
+        HttpClientTestingModule
+      ],
       providers: [
         CardListService
       ]
@@ -27,8 +31,8 @@ describe('ModalDeleteComponent', () => {
   });
 
   it('should method handleConfirm', async () => {
-    const onDelete = jest.spyOn(service, 'delete').mockImplementation()
-    //  component.handleConfirm()
+    const onDelete = jest.spyOn(service, 'delete').mockReturnValueOnce(of('Product successfully removed'))
+    component.onButtonConfirm()
      await expect(onDelete).toHaveBeenCalled()
   });
 });

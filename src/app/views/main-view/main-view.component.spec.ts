@@ -4,6 +4,19 @@ import { CardListService } from '../../services/card-list.service';
 import { RouterTestingModule } from '@angular/router/testing'
 import { MainViewComponent } from './main-view.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ListCard } from '../../models/data-list.models';
+import { of } from 'rxjs';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
+const data: ListCard[] = [{
+  id: "",
+  name: "registro",
+  description: "",
+  logo: "",
+  date_release: "",
+  date_revision: ""
+
+}]
 
 describe('MainViewComponent', () => {
   let component: MainViewComponent;
@@ -16,6 +29,7 @@ describe('MainViewComponent', () => {
       declarations: [MainViewComponent],
       imports: [
         RouterTestingModule,
+        HttpClientTestingModule
       ],
       providers: [CardListService],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -33,28 +47,41 @@ describe('MainViewComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should method handleAdd', () => {
+  it('should method onButtonAdd', () => {
     const navigate = jest.spyOn(router, 'navigate').mockImplementation()
-    component.handleAdd()
+    component.onButtonAdd()
     expect(navigate).toHaveBeenCalledWith(['/form']);
   });
 
 
-  it('method getCardList', async () => {
-    const data = [{
-      id: "tarjeta1",
-      name: "Tarjeta credito 1",
-      description: "registro1jj",
-      logo: "https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg",
-      date_release: "2023-12-12T00:00:00.000+00:00",
-      date_revision: "2023-12-13T00:00:00.000+00:00"
-
-    }]
-    const list = jest.spyOn(service, 'getLists').mockImplementation(() => Promise.resolve(data))
+  it('method onListProduct', () => {
+    component.isLoading = true
+    const list = jest.spyOn(service, 'getLists').mockReturnValueOnce(of(data))
     component.dataList = data
     component.dataListFilter = data
-    await component.getCardList()
+    component.onListProduct()
     expect(list).toHaveBeenCalled()
   })
 
+
+  it('method onSearchProduct', () => {
+    const event = {
+      target: {
+        value: ''
+      }
+    }
+    component.onSearchProduct(event)
+    expect(component.dataListFilter).toEqual(component.dataList)
+  })
+
+  it('method onSearchProduct', () => {
+    const event = {
+      target: {
+        value: 'registro'
+      }
+    }
+    component.dataList = data
+    component.onSearchProduct(event)
+    expect(component.dataListFilter.length).toBe(1)
+  })
 });

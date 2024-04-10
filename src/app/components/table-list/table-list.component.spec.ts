@@ -29,23 +29,8 @@ describe('TableListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should method handleSelect', () => {
-  //   const event = 5
-  //   const data = [{
-  //     id: "tarjeta1",
-  //     name: "Tarjeta credito 1",
-  //     description: "registro1jj",
-  //     logo: "https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg",
-  //     date_release: "2023-12-12T00:00:00.000+00:00",
-  //     date_revision: "2023-12-13T00:00:00.000+00:00"
 
-  //   }]
-  //   component.handleSelect(event)
-  //   expect(component.listFilter).toEqual(data.slice(0,event));
-  // });
-
-
-  it('should method handleEdit', () => {
+  it('should method onButtonEdit', () => {
     const navigate = jest.spyOn(router, 'navigate').mockImplementation()
 
     const item: ListCard = {
@@ -61,12 +46,12 @@ describe('TableListComponent', () => {
         item
       }
     }
-    component.handleEdit(item)
+    component.onButtonEdit(item)
     expect(navigate).toHaveBeenCalledWith(['/form'], navigationData);
   });
 
 
-  it('should method handleDelete', () => {
+  it('should method onButtonDelete', () => {
     const item: ListCard = {
       id: '',
       name: '',
@@ -76,18 +61,18 @@ describe('TableListComponent', () => {
       date_revision: '',
     }
     component.showModalDelete = true
-    component.handleDelete(item)
+    component.onButtonDelete(item)
     expect(component.selectList).toBe(item);
   });
 
 
-  it('should method handleCloseModal', () => {
-    component.handleCloseModal()
+  it('should method onCloseModal', () => {
+    component.onCloseModal()
     expect(component.showModalDelete).toBeFalsy();
   });
 
-  it('should method handleConfirm', () => {
-    component.handleConfirm()
+  it('should method onConfirm', () => {
+    component.onConfirm()
     expect(component.showModalDelete).toBeFalsy();
   });
 });

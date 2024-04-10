@@ -4,6 +4,19 @@ import { CardFormService } from '../../services/card-form.service';
 import { RouterTestingModule } from '@angular/router/testing'
 import { CardFormComponent } from './card-form.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { of } from 'rxjs';
+import { ListCard } from '../../models/data-list.models';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
+const data: ListCard[] = [{
+  id: "",
+  name: "registro",
+  description: "",
+  logo: "",
+  date_release: "",
+  date_revision: ""
+
+}]
 
 describe('CardFormComponent', () => {
   let component: CardFormComponent;
@@ -18,7 +31,8 @@ describe('CardFormComponent', () => {
       imports: [
         RouterTestingModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        HttpClientTestingModule
       ],
       providers: [
         CardFormService
@@ -39,24 +53,52 @@ describe('CardFormComponent', () => {
   });
 
 
-  it('should method handleSend', async () => {
-     jest.spyOn(router, 'navigate').mockImplementation()
-    const update = await jest.spyOn(service, 'updateProduct').mockImplementation()
+  it('should method onButtonSend', async () => {
+    jest.spyOn(router, 'navigate').mockImplementation()
+    const update = await jest.spyOn(service, 'updateProduct')
     component.isCreate = false
-    component.handleSend();
+    component.onButtonSend();
     expect(update).toHaveBeenCalled()
   });
 
-  it('should method handleSend', async () => {
+  it('should method onButtonSend', async () => {
     jest.spyOn(router, 'navigate').mockImplementation()
-    const verification = await jest.spyOn(service, 'verificationProduct').mockImplementation(() => Promise.resolve(false))
+    const verification = await jest.spyOn(service, 'verificationProduct').mockReturnValueOnce(of(false))
     component.isCreate = true
-    component.handleSend();
+    component.onButtonSend();
     expect(verification).toHaveBeenCalled();
   });
 
+  it('should method onListAdd', () => {
+    const navigate = jest.spyOn(router, 'navigate').mockImplementation()
+    const value = false
+    const spy = jest.spyOn(service, 'addProduct').mockReturnValueOnce(of(data))
+    component.onListAdd(value)
+    expect(spy).toHaveBeenCalled()
+    expect(navigate).toHaveBeenCalledWith(['/home']);
+
+  });
+
+  it('should method onListUpdate', () => {
+    const navigate = jest.spyOn(router, 'navigate').mockImplementation()
+    component.isCreate = false
+    const spy = jest.spyOn(service, 'updateProduct').mockReturnValueOnce(of(data))
+    component.onListUpdate()
+    expect(spy).toHaveBeenCalled()
+    expect(navigate).toHaveBeenCalledWith(['/home']);
+
+  });
+
   it('should method handleRestart', () => {
-    component.handleRestart()
+    component.onButtonReset()
     expect(component.form.controls['id'].value).toBe(null)
   });
+
+  it('should method goBack', () => {
+    const navigate = jest.spyOn(router, 'navigate').mockImplementation()
+    component.goBack()
+    expect(navigate).toHaveBeenCalledWith(['/home']);
+  });
+
+
 });
