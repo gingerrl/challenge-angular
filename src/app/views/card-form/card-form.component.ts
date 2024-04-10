@@ -58,7 +58,10 @@ export class CardFormComponent implements OnInit {
   ngOnInit(): void {
   }
   onButtonSend() {
-    this.onListUpdate()
+    if (!this.isCreate) {
+      this.onListUpdate()
+      return
+    }
     this.cardFormService.verificationProduct(this.form.controls['id'].value).subscribe((data) => {
       this.onListAdd(data)
     });
@@ -75,12 +78,10 @@ export class CardFormComponent implements OnInit {
   }
 
   onListUpdate() {
-    if (!this.isCreate) {
-      this.cardFormService.updateProduct(this.form.value).subscribe(() => {
-        this.router.navigate([`/home`]);
-      })
-      return
-    }
+    this.cardFormService.updateProduct(this.form.value).subscribe(() => {
+      this.router.navigate([`/home`]);
+
+    })
   }
 
   onButtonReset() {

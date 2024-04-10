@@ -1,29 +1,27 @@
 .container {
-    /* width: 100%;
-    height: 100%; */
     margin: auto;
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
+    margin-bottom: 0.938em;
 }
 
 .header-content input {
-    padding-left: 10px;
-    height: 30px;
-    border-radius: 8px;
+    padding-left: 0.625em;
+    height: 1.875em;
+    border-radius: 0.5em;
     border: 1px solid gray;
     align-self: center;
 }
 
 .button-add {
-    color: black;
-    background-color: yellow;
-    padding: 15px;
+    color: var(--color-black);
+    background-color: var(--color-yellow);
+    padding: 0.938em;
     border: 0px;
-    border-radius: 6px;
+    border-radius: 0.375em;
     cursor: pointer;
     font-weight: bold;
 }

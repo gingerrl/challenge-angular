@@ -18,4 +18,11 @@ body {
 :root {
     --loader-background-color: #EEEEEE;
     --loader-highlight-color: #DEDEDE;
+    --color-white: #fff;
+    --color-whisper: #eaeaea;
+    --color-seashell: #FFF5EE;
+    --color-yellow: #FFFF00;
+    --color-red: #FF0000;
+    --color-black: #000000;
 }
+

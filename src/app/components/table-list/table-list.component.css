@@ -1,6 +1,6 @@
 .container {
-  background-color: white;
-  padding: 16px;
+  background-color: var(--color-white);
+  padding: 1em;
 
 }
 
@@ -38,83 +38,70 @@
 }
 
 
-
-
 .table-responsive {
   display: none;
 }
 
 
 table {
-  /* font-family: arial, sans-serif; */
   border-collapse: collapse;
   width: 100%;
 }
 
 td {
   text-align: center;
-  padding: 20px;
-  border-top: 2px solid rgb(235, 232, 232);
-  gap: 16px;
+  padding: 1.25em;
+  border-top: 0.125em solid rgb(235, 232, 232);
+  gap: 1em;
 }
 
 th {
   background-color: rgb(235, 232, 232);
-  height: 50px;
+  height: 3.125em;
 }
 
 .image {
-  width: 50px;
-  height: 50px;
-  border-radius:1px 50%;
+  width: 3.125em;
+  height: 3.125em;
+  border-radius:0.063em 50%;
 }
 
 .footer {
   display: flex;
   justify-content: space-between;
-  padding: 16px;
+  padding: 1em;
 }
 
-
-
-/* Style for dropdown button */
 .dropbtn {
-  /* background-color: #5d5fd6; */
   color: black;
-  padding: 10px;
-  font-size: 15px;
+  padding: 0.625em;
+  font-size: 0.938em;
   border: none;
   cursor: pointer;
 }
 
-/* Style for dropdown content */
 .dropdown-content {
   display: none;
-  /* Hidden by default */
   position: absolute;
-  background-color: #ffffff;
-  min-width: 85px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background-color: var(--color-white);
+  min-width: 5.313em;
+  box-shadow: 0 0.5em 1em 0 rgba(0, 0, 0, 0.2);
   z-index: 1;
   cursor: pointer;
 }
 
-/* Style for each content div */
 .dropdown-content div {
-  padding: 10px 5px;
+  padding: 0.625em 0.313em;
 }
 
-/* Highlight dropdown options on hover */
 .dropdown-content div:hover {
-  background-color: #eaeaea;
+  background-color: var(--color-whisper);
 }
 
-/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* Highlight dropdown button when dropdown menu is open */
 .dropdown:hover .dropbtn {
-  background-color: seashell;
+  background-color: var(--color-seashell);
 }
