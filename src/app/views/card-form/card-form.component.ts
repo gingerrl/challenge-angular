@@ -45,28 +45,28 @@ export class CardFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private cardForm: CardFormService,
+    private cardFormService: CardFormService,
     private router: Router,
   ) {
     const data = this.router.getCurrentNavigation()?.extras.state
     if (data) {
       this.isCreate = false
-      this.handleItem(data['item'])
+      this.onListChanges(data['item'])
     }
   }
 
   ngOnInit(): void {
   }
-  handleFormSend() {
-    this.handleUpdateProduct()
-    this.cardForm.verificationProduct(this.form.controls['id'].value).subscribe((data) => {
-      this.handleAddProduct(data)
+  onButtonSend() {
+    this.onListUpdate()
+    this.cardFormService.verificationProduct(this.form.controls['id'].value).subscribe((data) => {
+      this.onListAdd(data)
     });
   }
 
-  handleAddProduct(exist: boolean) {
+  onListAdd(exist: boolean) {
     if (!exist) {
-      this.cardForm.addProduct(this.form.value).subscribe(() => {
+      this.cardFormService.addProduct(this.form.value).subscribe(() => {
         this.router.navigate([`/home`]);
       })
     } else {
@@ -74,16 +74,16 @@ export class CardFormComponent implements OnInit {
     }
   }
 
-  handleUpdateProduct() {
+  onListUpdate() {
     if (!this.isCreate) {
-      this.cardForm.updateProduct(this.form.value).subscribe(() => {
+      this.cardFormService.updateProduct(this.form.value).subscribe(() => {
         this.router.navigate([`/home`]);
       })
       return
     }
   }
 
-  handleRestart() {
+  onButtonReset() {
     if (!this.isCreate) {
       this.form.patchValue({
         name: '',
@@ -98,7 +98,7 @@ export class CardFormComponent implements OnInit {
     }
   }
 
-  handleItem(item: ListCard) {
+  onListChanges(item: ListCard) {
     this.form.setValue({
       id: item.id,
       name: item.name,

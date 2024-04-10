@@ -17,14 +17,14 @@ export class MainViewComponent implements OnInit {
     private router: Router
   ) { }
   ngOnInit(): void {
-    this.getCardList()
+    this.onListProduct()
   }
 
-  handleAdd() {
+  onButtonAdd() {
     this.router.navigate(['/form'])
   }
 
-  getCardList() {
+  onListProduct(): void {
     this.isLoading = true
     this.cardListService.getLists().subscribe((data) => {
       this.isLoading = false
@@ -34,7 +34,7 @@ export class MainViewComponent implements OnInit {
 
   }
 
-  handleSearch(e: any) {
+  onSearchProduct(e: any): void {
     if (e.target.value.trim() === '') {
       this.dataListFilter = this.dataList
     } else {

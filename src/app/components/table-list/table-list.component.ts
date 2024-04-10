@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { ListCard } from 'src/app/models/data-list.models';
+import { ListCard } from '../../models/data-list.models';
 
 @Component({
   selector: 'app-table-list',
@@ -11,7 +11,7 @@ export class TableListComponent implements OnInit, OnChanges {
   @Input() dataList: ListCard[] = [];
   @Output() listEvent = new EventEmitter()
 
-  listFilter: ListCard[] = []
+  listProduct: ListCard[] = []
   showModalDelete = false
   selectList: ListCard = {
     id: '',
@@ -28,14 +28,16 @@ export class TableListComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
 
-  handleSelect(e: any) {
-    this.listFilter = this.dataList.slice(0, e.target.value)
+  ngOnChanges(changes: SimpleChanges): void {
+    this.listProduct = changes?.['dataList'].currentValue.slice(0, 5)
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.listFilter = changes?.['dataList'].currentValue.slice(0, 5)
+  onDropDown(e: any) {
+    this.listProduct = this.dataList.slice(0, e.target.value)
   }
-  handleEdit(item: ListCard) {
+
+
+  onButtonEdit(item: ListCard) {
     const navigationData: NavigationExtras = {
       state: {
         item
@@ -43,16 +45,16 @@ export class TableListComponent implements OnInit, OnChanges {
     }
     this.router.navigate(['/form'], navigationData)
   }
-  handleDelete(item: ListCard) {
+  onButtonDelete(item: ListCard) {
     this.selectList = item
     this.showModalDelete = true
   }
 
-  handleCloseModal() {
+  onCloseModal() {
     this.showModalDelete = false
 
   }
-  handleConfirm() {
+  onConfirm() {
     this.showModalDelete = false;
     this.listEvent.emit()
   }

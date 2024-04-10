@@ -1,14 +1,14 @@
 <div class="container">
     <div class="header-content">
-        <input id="search" placeholder="Search.." (keyup)="handleSearch($event)" />
-        <button class="button-add" (click)="handleAdd()">
+        <input id="search" placeholder="Search.." (keyup)="onSearchProduct($event)" />
+        <button class="button-add" (click)="onButtonAdd()">
             Agregar
         </button>
     </div>
-    <ng-container *ngIf="isLoading === true ; else other">
+    <ng-container *ngIf="isLoading === true ; else listTable">
         <app-table-skeletons></app-table-skeletons>
     </ng-container>
-    <ng-template #other>
-        <app-table-list [dataList]="dataListFilter" (listEvent)="getCardList()"></app-table-list>
+    <ng-template #listTable>
+        <app-table-list [dataList]="dataListFilter" (listEvent)="onListProduct()"></app-table-list>
     </ng-template>
 </div>

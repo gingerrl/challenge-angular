@@ -29,7 +29,7 @@ export class ModalDeleteComponent {
     this.closeModal.emit()
   }
   onButtonConfirm(): void {
-    this.deleteService.delete(this.item.id).subscribe((data) => {
+    this.deleteService.delete(this.item.id).subscribe(() => {
       this.buttonConfirm.emit()
     })
 

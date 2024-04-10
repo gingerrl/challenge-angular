@@ -60,10 +60,10 @@
     </form>
 
     <div class="button-content">
-        <button class="button-reiniciar" (click)="handleRestart()">
+        <button class="button-reiniciar" (click)="onButtonReset()">
             Reiniciar
         </button>
-        <button class="button-send" (click)="handleFormSend()" [disabled]="form.invalid">
+        <button class="button-send" (click)="onButtonSend()" [disabled]="form.invalid">
             Enviar
         </button>
     </div>

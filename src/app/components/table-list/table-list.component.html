@@ -8,7 +8,7 @@
             <th>Fecha de reestructuración</th>
             <th></th>
         </tr>
-        <tr *ngFor=" let item of listFilter">
+        <tr *ngFor=" let item of listProduct">
             <td><img class="image" src={{item.logo}} alt={{item.name}}></td>
             <td>{{item.name}}</td>
             <td>{{item.description}}</td>
@@ -19,8 +19,8 @@
                     <!-- <button class="">Dropdown</button> -->
                     <i class="fa-solid fa-ellipsis-vertical dropbtn"></i>
                     <div class="dropdown-content">
-                        <div (click)="handleEdit(item)">Editar</div>
-                        <div (click)="handleDelete(item)">Eliminar</div>
+                        <div (click)="onButtonEdit(item)">Editar</div>
+                        <div (click)="onButtonDelete(item)">Eliminar</div>
                     </div>
                 </span>
             </td>
@@ -29,9 +29,9 @@
 
     <div class="footer">
         <div>
-            {{listFilter.length}} Resultados
+            {{listProduct.length}} Resultados
         </div>
-        <select name="select" (change)="handleSelect($event)">
+        <select name="select" (change)="onDropDown($event)">
             <option value="5" selected>5</option>
             <option value="10">10</option>
             <option value="20">20</option>
@@ -43,7 +43,7 @@
 
 <div class="container table-responsive">
     <table>
-        <div *ngFor=" let item of listFilter">
+        <div *ngFor=" let item of listProduct">
             <tr>
                 <th>Logo</th>
                 <td><img class="image" src={{item.logo}} alt={{item.name}}></td>
@@ -76,8 +76,8 @@
                         <!-- <button class="">Dropdown</button> -->
                         <i class="fa-solid fa-ellipsis-vertical dropbtn"></i>
                         <div class="dropdown-content">
-                            <div (click)="handleEdit(item)">Editar</div>
-                            <div (click)="handleDelete(item)">Eliminar</div>
+                            <div (click)="onButtonEdit(item)">Editar</div>
+                            <div (click)="onButtonDelete(item)">Eliminar</div>
                         </div>
                     </span>
                 </td>
@@ -88,9 +88,9 @@
 
     <div class="footer">
         <div>
-            {{listFilter.length}} Resultados
+            {{listProduct.length}} Resultados
         </div>
-        <select name="select" (change)="handleSelect($event)">
+        <select name="select" (change)="onDropDown($event)">
             <option value="5" selected>5</option>
             <option value="10">10</option>
             <option value="20">20</option>
@@ -99,6 +99,6 @@
 </div>
 
 <ng-container *ngIf="showModalDelete">
-    <app-modal-delete [item]="selectList" (closeModal)="handleCloseModal()"
-        (buttonConfirm)="handleConfirm()"></app-modal-delete>
+    <app-modal-delete [item]="selectList" (closeModal)="onCloseModal()"
+        (buttonConfirm)="onConfirm()"></app-modal-delete>
 </ng-container>
